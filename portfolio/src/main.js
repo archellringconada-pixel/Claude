@@ -1,60 +1,69 @@
 import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+document.getElementById('year').textContent = new Date().getFullYear()
 
-<div class="ticks"></div>
+// Mobile nav
+const toggle = document.querySelector('.nav-toggle')
+const nav = document.getElementById('nav')
+toggle.addEventListener('click', () => {
+  const open = nav.classList.toggle('open')
+  toggle.setAttribute('aria-expanded', String(open))
+})
+nav.addEventListener('click', (e) => {
+  if (e.target.closest('a')) {
+    nav.classList.remove('open')
+    toggle.setAttribute('aria-expanded', 'false')
+  }
+})
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+// Image slots: show a clearly-marked placeholder until the real asset exists.
+document.querySelectorAll('.slot').forEach((slot) => {
+  const img = slot.querySelector('img')
+  const showPlaceholder = () => {
+    slot.classList.add('is-empty')
+    if (!slot.querySelector('.ph')) {
+      const ph = document.createElement('div')
+      ph.className = 'ph'
+      ph.textContent = `[PLACEHOLDER: ${slot.dataset.label} — add images/${slot.dataset.img}]`
+      slot.prepend(ph)
+    }
+  }
+  img.addEventListener('error', showPlaceholder)
+  if (img.complete && img.naturalWidth === 0) showPlaceholder()
+})
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
-
-setupCounter(document.querySelector('#counter'))
+// Contact form (Formspree)
+const form = document.getElementById('contact-form')
+const status = document.getElementById('form-status')
+form.addEventListener('submit', async (e) => {
+  e.preventDefault()
+  status.className = ''
+  if (!form.checkValidity()) {
+    form.reportValidity()
+    return
+  }
+  if (form.action.includes('YOUR_FORM_ID')) {
+    status.textContent = 'The form is not connected yet. Please email me directly in the meantime.'
+    status.className = 'err'
+    return
+  }
+  const btn = form.querySelector('button')
+  btn.disabled = true
+  status.textContent = 'Sending…'
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' },
+    })
+    if (!res.ok) throw new Error(String(res.status))
+    form.reset()
+    status.textContent = 'Thanks — your message was sent.'
+    status.className = 'ok'
+  } catch {
+    status.textContent = 'Something went wrong. Please email me directly instead.'
+    status.className = 'err'
+  } finally {
+    btn.disabled = false
+  }
+})
