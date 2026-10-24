@@ -65,6 +65,7 @@ p { margin: 0 0 16px; }
 .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
 .tagline { font-size: 1.25rem; font-weight: 600; margin-bottom: 16px; }
 .headshot { margin: 0; }
+.headshot img { width: 100%; aspect-ratio: 1; object-fit: cover; }
 
 /* Image slots */
 .slot { margin: 0; border-radius: var(--radius); overflow: hidden; background: #fff; border: 1px solid var(--line); }
