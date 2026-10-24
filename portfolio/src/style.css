@@ -1,11 +1,11 @@
 :root {
-  --bg: #ffffff;
-  --bg-alt: #f6f8f7;
-  --text: #1c2523;
-  --muted: #5a6764;
-  --line: #e1e7e5;
-  --accent: #0f6b5c;
-  --accent-dark: #0a4f44;
+  --bg: #fffdf8;
+  --bg-alt: #f6efdc;
+  --text: #2a241b;
+  --muted: #6b6354;
+  --line: #e6dcc3;
+  --accent: #8a5a14;
+  --accent-dark: #66410b;
   --radius: 10px;
   --max: 1080px;
 }
@@ -43,7 +43,7 @@ p { margin: 0 0 16px; }
 .lede { font-size: 1.15rem; color: var(--muted); }
 
 /* Header */
-.site-header { position: sticky; top: 0; background: rgba(255,255,255,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 50; }
+.site-header { position: sticky; top: 0; background: rgba(255,253,248,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 50; }
 .bar { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .brand { font-weight: 700; text-decoration: none; color: var(--text); }
 .nav { display: flex; align-items: center; gap: 22px; }
@@ -61,7 +61,7 @@ p { margin: 0 0 16px; }
 .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
 
 /* Hero */
-.hero { padding: 80px 0 72px; }
+.hero { padding: 80px 0 72px; background: linear-gradient(180deg, #ecdfbf 0%, #f6efdc 70%, var(--bg) 100%); }
 .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
 .tagline { font-size: 1.25rem; font-weight: 600; margin-bottom: 16px; text-wrap: balance; }
 .headshot { margin: 0; }
@@ -70,7 +70,7 @@ p { margin: 0 0 16px; }
 /* Image slots */
 .slot { margin: 0; border-radius: var(--radius); overflow: hidden; background: #fff; border: 1px solid var(--line); }
 .slot.is-empty img { display: none; }
-.ph { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 220px; padding: 20px; background: repeating-linear-gradient(45deg, #fbfcfc, #fbfcfc 12px, #f1f4f3 12px, #f1f4f3 24px); color: var(--muted); font-size: 0.85rem; }
+.ph { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 220px; padding: 20px; background: repeating-linear-gradient(45deg, #fffdf8, #fffdf8 12px, #f3ecd8 12px, #f3ecd8 24px); color: var(--muted); font-size: 0.85rem; }
 .headshot .ph { aspect-ratio: 4 / 5; }
 .slot figcaption { padding: 12px 16px; font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--line); }
 .slot figcaption strong { color: var(--text); }
@@ -94,7 +94,7 @@ p { margin: 0 0 16px; }
 /* Tools & Programs */
 .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 24px; margin-top: 32px; }
 .tool-group h3 { font-size: 1.05rem; margin-bottom: 10px; }
-.tool-card { list-style: none; margin: 0; padding: 16px; min-height: 120px; display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 14px 8px; align-content: start; border-radius: 18px; background: linear-gradient(135deg, #cfe6e3 0%, #e7f1ef 55%, #f4f7f6 100%); border: 1px solid var(--line); }
+.tool-card { list-style: none; margin: 0; padding: 16px; min-height: 120px; display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 14px 8px; align-content: start; border-radius: 18px; background: linear-gradient(135deg, #e8dbb9 0%, #f2e9d0 55%, #faf5e6 100%); border: 1px solid var(--line); }
 .tool { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
 .ti { width: 44px; height: 44px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
 .ti svg { width: 24px; height: 24px; }
@@ -130,7 +130,7 @@ p { margin: 0 0 16px; }
 .contact-list li { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 .contact-list span { width: 72px; color: var(--muted); }
 form label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 16px; }
-form input, form textarea { display: block; width: 100%; margin-top: 6px; padding: 11px 12px; border: 1px solid #c8d1cf; border-radius: 8px; font: inherit; background: #fff; }
+form input, form textarea { display: block; width: 100%; margin-top: 6px; padding: 11px 12px; border: 1px solid #d9ccaa; border-radius: 8px; font: inherit; background: #fff; }
 form input:focus, form textarea:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
 .hp { position: absolute; left: -9999px; }
 #form-status { margin: 12px 0 0; font-size: 0.95rem; }
