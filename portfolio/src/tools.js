@@ -1,0 +1,108 @@
+import {
+  siFacebook, siInstagram, siTiktok, siNotion, siAsana, siGmail, siGooglecalendar,
+  siGoogledrive, siGoogledocs, siGooglemeet, siZoom, siWordpress, siWoocommerce,
+  siElementor, siHtml5, siGoogleanalytics, siGooglesearchconsole, siSemrush,
+  siAirtable, siMake, siClaude, siWondersharefilmora,
+} from 'simple-icons'
+
+// Official logo where the icon set has one; otherwise a lettered badge (bg/fg colours).
+const badge = (mono, bg, fg = '#fff') => ({ mono, bg, fg })
+
+const groups = [
+  { title: 'Social Media & Advertising', items: [
+    { name: 'LinkedIn', sub: 'Recruiter, Sales Navigator, Campaign Manager', ...badge('in', '#0a66c2') },
+    { name: 'Facebook', sub: 'Business Suite & Ads', icon: siFacebook },
+    { name: 'Instagram', icon: siInstagram },
+    { name: 'TikTok', icon: siTiktok },
+  ] },
+  { title: 'Project Management', items: [
+    { name: 'Notion', icon: siNotion },
+    { name: 'Microsoft Project', ...badge('P', '#31752f') },
+    { name: 'Asana', icon: siAsana },
+    { name: 'Monday.com', ...badge('m', '#ff3d57') },
+  ] },
+  { title: 'Documentation & Reporting', items: [
+    { name: 'Excel', ...badge('X', '#107c41') },
+    { name: 'Word', ...badge('W', '#185abd') },
+    { name: 'PowerPoint', ...badge('P', '#c43e1c') },
+    { name: 'Outlook', ...badge('O', '#0f6cbd') },
+    { name: 'Power BI', ...badge('BI', '#f2c811', '#1c2523') },
+  ] },
+  { title: 'Google Workspace', items: [
+    { name: 'Gmail', icon: siGmail },
+    { name: 'Calendar', icon: siGooglecalendar },
+    { name: 'Drive', icon: siGoogledrive },
+    { name: 'Docs', icon: siGoogledocs },
+    { name: 'Meet', icon: siGooglemeet },
+  ] },
+  { title: 'Communication & Collaboration', items: [
+    { name: 'SharePoint', ...badge('S', '#038387') },
+    { name: 'Slack', ...badge('S', '#4a154b') },
+    { name: 'Zoom', icon: siZoom },
+    { name: 'Microsoft Teams', ...badge('T', '#5059c9') },
+  ] },
+  { title: 'Editing & Design', items: [
+    { name: 'Illustrator', ...badge('Ai', '#330000', '#ff9a00') },
+    { name: 'Photoshop', ...badge('Ps', '#001e36', '#31a8ff') },
+    { name: 'Canva', ...badge('C', '#00c4cc') },
+    { name: 'CapCut', ...badge('C', '#111111') },
+    { name: 'Shotcut', ...badge('S', '#2f6f9f') },
+    { name: 'Filmora', icon: siWondersharefilmora },
+  ] },
+  { title: 'Website, Audit & SEO', items: [
+    { name: 'WordPress', icon: siWordpress },
+    { name: 'WooCommerce', icon: siWoocommerce },
+    { name: 'Elementor', icon: siElementor },
+    { name: 'HTML & CSS', icon: siHtml5 },
+    { name: 'Google Analytics', sub: 'GA4', icon: siGoogleanalytics },
+    { name: 'Search Console', icon: siGooglesearchconsole },
+    { name: 'Screaming Frog', ...badge('SF', '#6ba43a') },
+    { name: 'Semrush', icon: siSemrush },
+    { name: 'Meta SEO Inspector', ...badge('M', '#2c4a7c') },
+    { name: 'Ubersuggest', ...badge('U', '#f26122') },
+  ] },
+  { title: 'CRM & Automation', items: [
+    { name: 'GoHighLevel', ...badge('G', '#3b7ddd') },
+    { name: 'ActiveCampaign', ...badge('A', '#356ae6') },
+    { name: 'Airtable', icon: siAirtable },
+    { name: 'Boost.space / Make', icon: siMake },
+    { name: 'Claude Code', sub: 'AI-assisted development', icon: siClaude },
+  ] },
+]
+
+const el = (tag, cls, text) => {
+  const n = document.createElement(tag)
+  if (cls) n.className = cls
+  if (text) n.textContent = text
+  return n
+}
+
+function iconNode(item) {
+  if (item.icon) {
+    const span = el('span', 'ti')
+    span.setAttribute('aria-hidden', 'true')
+    span.innerHTML = `<svg viewBox="0 0 24 24" role="img"><path fill="#${item.icon.hex}" d="${item.icon.path}"/></svg>`
+    return span
+  }
+  const span = el('span', 'ti ti-badge', item.mono)
+  span.style.background = item.bg
+  span.style.color = item.fg
+  span.setAttribute('aria-hidden', 'true')
+  return span
+}
+
+export function renderTools(root) {
+  groups.forEach((g) => {
+    const wrap = el('div', 'tool-group')
+    wrap.append(el('h3', '', g.title))
+    const ul = el('ul', 'tool-card')
+    g.items.forEach((item) => {
+      const li = el('li', 'tool')
+      if (item.sub) li.title = item.sub
+      li.append(iconNode(item), el('span', 'tn', item.name))
+      ul.append(li)
+    })
+    wrap.append(ul)
+    root.append(wrap)
+  })
+}

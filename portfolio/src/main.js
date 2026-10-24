@@ -1,4 +1,7 @@
 import './style.css'
+import { renderTools } from './tools.js'
+
+renderTools(document.getElementById('tool-grid'))
 
 document.getElementById('year').textContent = new Date().getFullYear()
 
