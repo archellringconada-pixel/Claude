@@ -89,7 +89,13 @@ p { margin: 0 0 16px; }
 .chips { list-style: none; padding: 0; margin: 0 0 48px; display: flex; flex-wrap: wrap; gap: 10px; }
 .chips li { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px; font-size: 0.95rem; }
 .alt .chips li { background: #fff; }
-.building { margin-top: -24px; }
+.building { margin-top: 32px; }
+
+/* Tools & Programs */
+.tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 24px; margin-top: 32px; }
+.tool-group h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.tool-card { list-style: none; margin: 0; padding: 18px; min-height: 120px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 8px; border-radius: 18px; background: linear-gradient(135deg, #cfe6e3 0%, #e7f1ef 55%, #f4f7f6 100%); border: 1px solid var(--line); }
+.tool-card li { background: rgba(255,255,255,0.85); border-radius: 999px; padding: 6px 14px; font-size: 0.9rem; font-weight: 500; }
 
 /* Samples */
 .samples { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
@@ -134,6 +140,7 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
   .hero-grid, .contact-grid, .cases { grid-template-columns: 1fr; }
   .headshot { max-width: 280px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .tool-grid { grid-template-columns: 1fr; }
   .nav-toggle { display: block; }
   .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 8px 20px 16px; }
   .nav.open { display: flex; }
