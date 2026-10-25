@@ -311,3 +311,19 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 .phase-last { background: linear-gradient(135deg, #efe4d6, #f8f2e9); }
 @media (max-width: 860px) { .process { grid-template-columns: 1fr; } }
 .phase-last .step-icon { background: #fff; }
+
+/* Client work */
+.clients { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.client { padding: 28px; background: #fff; border: 1px solid var(--line); border-radius: 16px; display: flex; flex-direction: column; gap: 14px; }
+.client-feat { grid-column: 1 / -1; }
+.client-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.client-avatar { flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #e6d4c1, #f3ebe0); color: var(--accent); border: 1px solid var(--line); }
+.client-avatar svg { width: 26px; height: 26px; }
+.client-id { flex: 1; min-width: 0; }
+.client-id h3 { margin: 0; font-size: 1.2rem; }
+.client-role { margin: 2px 0 0; color: var(--muted); font-size: 0.92rem; }
+.client-status { padding: 4px 12px; border-radius: 999px; background: #e7efe2; color: #3f5d32; font-size: 0.78rem; font-weight: 600; white-space: nowrap; }
+.client-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.client-tags li { padding: 4px 12px; border-radius: 999px; background: #f3ebe0; border: 1px solid var(--line); font-size: 0.8rem; font-weight: 500; color: var(--accent-dark); }
+.client > p:last-child { margin: 0; color: var(--muted); }
+@media (max-width: 860px) { .clients { grid-template-columns: 1fr; } }
