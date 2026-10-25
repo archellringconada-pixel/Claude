@@ -13,7 +13,6 @@ Drop exported images here using these exact filenames. Until a file exists, the 
 
 Resume PDF goes in `public/resume/` as `Archie-Ringconada-Resume.pdf`.
 
-Instagram account insights screenshot: `instagram-insights.jpg`.
 
 Blog sample: `gnp-blog.jpg` (Garden Nursery Products blog post).
 

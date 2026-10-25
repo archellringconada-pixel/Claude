@@ -58,8 +58,12 @@ form.addEventListener('submit', async (e) => {
     return
   }
   if (form.action.includes('YOUR_FORM_ID')) {
-    status.textContent = 'The form is not connected yet. Please email me directly in the meantime.'
-    status.className = 'err'
+    // Form service not connected yet: fall back to the visitor's email app.
+    const f = new FormData(form)
+    const body = `${f.get('message')}\n\n— ${f.get('name')} (${f.get('email')})`
+    location.href = `mailto:archellringconada@gmail.com?subject=${encodeURIComponent('Message from your portfolio')}&body=${encodeURIComponent(body)}`
+    status.textContent = 'Opening your email app to send this message…'
+    status.className = 'ok'
     return
   }
   const btn = form.querySelector('button')
