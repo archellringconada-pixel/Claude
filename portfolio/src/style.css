@@ -265,3 +265,5 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 .top-rule { border-top: 1px solid var(--line); }
 .website-work { margin: 48px 0 8px; font-size: 1.15rem; }
 #automation .samples { margin-top: 16px; }
+
+.tagline-sub { margin: -8px 0 16px; font-size: 1.05rem; color: var(--accent-dark); font-weight: 500; }
