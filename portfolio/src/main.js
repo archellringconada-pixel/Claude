@@ -153,3 +153,24 @@ document.querySelectorAll('.sample img').forEach((img) => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open() }
   })
 })
+
+// Mobile: collapse extra work samples behind a "Show more" button
+document.querySelectorAll('[data-collapse]').forEach((grid) => {
+  const keep = Number(grid.dataset.collapse)
+  const items = [...grid.children]
+  items.slice(keep).forEach((el) => el.classList.add('m-hide'))
+  if (keep === 0) grid.classList.add('all-hidden')
+  grid.classList.add('collapsible')
+  const extra = items.length - keep
+  const btn = document.createElement('button')
+  btn.type = 'button'
+  btn.className = 'show-more'
+  btn.setAttribute('aria-expanded', 'false')
+  btn.textContent = `Show ${extra} more sample${extra > 1 ? 's' : ''}`
+  btn.addEventListener('click', () => {
+    const open = grid.classList.toggle('expanded')
+    btn.setAttribute('aria-expanded', String(open))
+    btn.textContent = open ? 'Show less' : `Show ${extra} more sample${extra > 1 ? 's' : ''}`
+  })
+  grid.after(btn)
+})

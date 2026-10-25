@@ -343,3 +343,13 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
   .client-status { margin-left: 66px; }
 }
 .nav a:not(.btn) { padding: 10px 2px; }
+
+/* Show more (mobile only) */
+.show-more { display: none; margin: 16px auto 0; padding: 10px 22px; border-radius: 999px; border: 2px solid var(--accent); background: transparent; color: var(--accent-dark); font: inherit; font-weight: 600; cursor: pointer; }
+.show-more:hover { background: var(--accent); color: #fff; }
+@media (max-width: 860px) {
+  .show-more { display: block; }
+  .collapsible:not(.expanded) .m-hide { display: none; }
+  .collapsible.all-hidden:not(.expanded) { display: none; }
+  .samples + .show-more { margin-top: 16px; }
+}
