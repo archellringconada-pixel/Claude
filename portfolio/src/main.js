@@ -1,7 +1,8 @@
 import './style.css'
-import { renderTools } from './tools.js'
+import { renderTools, renderToolRow } from './tools.js'
 
 renderTools(document.getElementById('tool-grid'))
+renderToolRow(document.getElementById('p2-tools'), ['WooCommerce', 'Elementor', 'GoHighLevel', 'Airtable', 'Boost.space / Make', 'Google Analytics', 'Search Console', 'Claude Code'])
 
 document.getElementById('year').textContent = new Date().getFullYear()
 

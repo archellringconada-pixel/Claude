@@ -1,6 +1,6 @@
 import {
   siFacebook, siInstagram, siTiktok, siNotion, siAsana, siGmail, siGooglecalendar,
-  siGoogledrive, siGoogledocs, siGooglemeet, siZoom, siWordpress, siWoocommerce,
+  siGoogledrive, siGoogledocs, siGooglemeet, siZoom, siWordpress,
   siElementor, siHtml5, siGoogleanalytics, siGooglesearchconsole, siSemrush,
   siAirtable, siMake, siClaude, siWondersharefilmora,
 } from 'simple-icons'
@@ -51,7 +51,7 @@ const groups = [
   ] },
   { title: 'Website, Audit & SEO', items: [
     { name: 'WordPress', icon: siWordpress },
-    { name: 'WooCommerce', icon: siWoocommerce },
+    { name: 'WooCommerce', ...badge('Woo', '#96588a') },
     { name: 'Elementor', icon: siElementor },
     { name: 'HTML & CSS', icon: siHtml5 },
     { name: 'Google Analytics', sub: 'GA4', icon: siGoogleanalytics },
@@ -104,5 +104,16 @@ export function renderTools(root) {
     })
     wrap.append(ul)
     root.append(wrap)
+  })
+}
+
+export function renderToolRow(root, names) {
+  const all = groups.flatMap((g) => g.items)
+  names.forEach((name) => {
+    const item = all.find((i) => i.name === name)
+    if (!item) return
+    const li = el('li', 'tool')
+    li.append(iconNode(item), el('span', 'tn', item.name))
+    root.append(li)
   })
 }

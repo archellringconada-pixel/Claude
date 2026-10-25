@@ -162,54 +162,131 @@
           <h2>AI Automation &amp; Technical Operations</h2>
           <p class="lede narrow-left">I'm actively building deep expertise in AI automation, working hands-on with real client systems using tools like n8n, Claude Code, and workflow automation platforms. Here's real, measured work from current client projects.</p>
 
-          <div class="web-mgmt">
-            <h3>Website management</h3>
-            <p>Day-to-day care of live e-commerce sites: speed and performance fixes, stock and product updates, analytics and tracking, blog posting and content updates, and keeping everything running reliably on WooCommerce and Elementor.</p>
+          <div class="p2-top">
+            <div class="web-mgmt">
+              <h3>Website management</h3>
+              <p>Day-to-day care of live e-commerce sites: speed and performance fixes, stock and product updates, analytics and tracking, blog posting and content updates, and keeping everything running reliably on WooCommerce and Elementor.</p>
+            </div>
+            <div class="p2-tools">
+              <h3>Tools used</h3>
+              <ul class="tool-row" id="p2-tools"></ul>
+            </div>
           </div>
 
-          <p class="tools"><strong>Tools used:</strong> WooCommerce, Elementor, GoHighLevel, Airtable, Boost.space/Make, GA4, Search Console, Claude Code</p>
-
           <div class="cases">
-            <article class="case">
-              <h3>Finding the cause of a months-long server slowdown</h3>
-              <dl>
-                <dt>Challenge</dt><dd>Server load high since early September; first-byte times up to 5.7s on uncached pages.</dd>
-                <dt>What I did</dt><dd>Diagnosed with the hosting provider, traced a hanging cart-refresh request to one plugin hook sending a pointless tracking ping on nearly every page view, and removed it with a small reversible fix.</dd>
-              </dl>
-              <p class="result"><strong>Result:</strong> Cart refresh request went from 534–586s to 1–1.3s. No hosting upgrade needed.</p>
+            <article class="case-card">
+              <header class="case-head">
+                <span class="case-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v5H4zM4 13h16v5H4zM8 8.5h.01M8 15.5h.01" /></svg></span>
+                <h3>Finding the cause of a months-long server slowdown</h3>
+              </header>
+              <p class="case-challenge"><b>Challenge:</b> Server load high since early September; first-byte times up to 5.7s on uncached pages.</p>
+              <div class="case-big"><strong>534–586s → 1–1.3s</strong><span>Cart refresh request. No hosting upgrade needed.</span></div>
+              <div class="ba">
+                <div class="ba-row">
+                  <span class="ba-label">Cart refresh request</span>
+                  <span class="ba-bars">
+                    <span class="ba-line before"><i>Before</i><span class="ba-track"><span class="ba-fill" style="width:100%"></span></span><b>534–586s</b></span>
+                    <span class="ba-line after"><i>After</i><span class="ba-track"><span class="ba-fill" style="width:2%"></span></span><b>1–1.3s</b></span>
+                  </span>
+                </div>
+              </div>
+              <details class="case-did">
+                <summary>What I did</summary>
+                <p>Diagnosed with the hosting provider, traced a hanging cart-refresh request to one plugin hook sending a pointless tracking ping on nearly every page view, and removed it with a small reversible fix.</p>
+              </details>
             </article>
-
-            <article class="case">
-              <h3>Making product pages usable on a phone</h3>
-              <dl>
-                <dt>Challenge</dt><dd>Product pages froze for 4.6s on mobile; ~1.2MB of unused JavaScript loading.</dd>
-                <dt>What I did</dt><dd>Removed unused scripts on product pages only, with a full regression check (checkout, add-to-cart, analytics events) before redeploying.</dd>
-              </dl>
-              <p class="result"><strong>Result:</strong> Total blocking time 4,590ms → 360ms (−92%), performance score 30 → 49, JS execution time 9.4s → 2.2s, page weight 9.4MB → 6.7MB.</p>
+            <article class="case-card">
+              <header class="case-head">
+                <span class="case-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></span>
+                <h3>Making product pages usable on a phone</h3>
+              </header>
+              <p class="case-challenge"><b>Challenge:</b> Product pages froze for 4.6s on mobile; ~1.2MB of unused JavaScript loading.</p>
+              <div class="case-big"><strong>−92%</strong><span>Total blocking time on mobile product pages</span></div>
+              <div class="ba">
+                <div class="ba-row">
+                  <span class="ba-label">Total blocking time</span>
+                  <span class="ba-bars">
+                    <span class="ba-line before"><i>Before</i><span class="ba-track"><span class="ba-fill" style="width:100%"></span></span><b>4,590ms</b></span>
+                    <span class="ba-line after"><i>After</i><span class="ba-track"><span class="ba-fill" style="width:8%"></span></span><b>360ms</b></span>
+                  </span>
+                </div>
+                <div class="ba-row">
+                  <span class="ba-label">JS execution time</span>
+                  <span class="ba-bars">
+                    <span class="ba-line before"><i>Before</i><span class="ba-track"><span class="ba-fill" style="width:100%"></span></span><b>9.4s</b></span>
+                    <span class="ba-line after"><i>After</i><span class="ba-track"><span class="ba-fill" style="width:23%"></span></span><b>2.2s</b></span>
+                  </span>
+                </div>
+                <div class="ba-row">
+                  <span class="ba-label">Page weight</span>
+                  <span class="ba-bars">
+                    <span class="ba-line before"><i>Before</i><span class="ba-track"><span class="ba-fill" style="width:100%"></span></span><b>9.4MB</b></span>
+                    <span class="ba-line after"><i>After</i><span class="ba-track"><span class="ba-fill" style="width:71%"></span></span><b>6.7MB</b></span>
+                  </span>
+                </div>
+                <div class="ba-row">
+                  <span class="ba-label">Performance score</span>
+                  <span class="ba-bars">
+                    <span class="ba-line before"><i>Before</i><span class="ba-track"><span class="ba-fill" style="width:30%"></span></span><b>30</b></span>
+                    <span class="ba-line after"><i>After</i><span class="ba-track"><span class="ba-fill" style="width:49%"></span></span><b>49</b></span>
+                  </span>
+                </div>
+              </div>
+              <details class="case-did">
+                <summary>What I did</summary>
+                <p>Removed unused scripts on product pages only, with a full regression check (checkout, add-to-cart, analytics events) before redeploying.</p>
+              </details>
             </article>
-
-            <article class="case">
-              <h3>Stock sync automation + back-in-stock waiting list</h3>
-              <dl>
-                <dt>Challenge</dt><dd>Owner updated quantities in Airtable but nothing pushed to the website — risk of overselling or wrongly hiding products.</dd>
-                <dt>What I did</dt><dd>Built an automatic push (Airtable edit → Boost.space/Make → WooCommerce update), tested end to end, and added a back-in-stock waitlist with automatic discount codes.</dd>
-              </dl>
-              <p class="result"><strong>Result:</strong> 29 products corrected on first run, then 168/172 then 160/160 matching with zero differences; every automated run has succeeded since launch.</p>
+            <article class="case-card">
+              <header class="case-head">
+                <span class="case-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14-4M4 4v4h4M4 13a8 8 0 0 0 14 4M20 20v-4h-4"/></svg></span>
+                <h3>Stock sync automation + back-in-stock waiting list</h3>
+              </header>
+              <p class="case-challenge"><b>Challenge:</b> Owner updated quantities in Airtable but nothing pushed to the website — risk of overselling or wrongly hiding products.</p>
+              <div class="case-big"><strong>160/160</strong><span>products matching after the sync (168/172 on the earlier check)</span></div>
+              <div class="flow" aria-label="Airtable edit, then Boost.space/Make, then WooCommerce update">
+                <span>Airtable edit</span><i aria-hidden="true">→</i><span>Boost.space / Make</span><i aria-hidden="true">→</i><span>WooCommerce update</span>
+              </div>
+              <ul class="proofs">
+                <li><b>29</b> products corrected on first run</li>
+                <li><b>160/160</b> matching, zero differences</li>
+                <li><b>Every</b> automated run succeeded since launch</li>
+              </ul>
+              <details class="case-did">
+                <summary>What I did</summary>
+                <p>Built an automatic push (Airtable edit → Boost.space/Make → WooCommerce update), tested end to end, and added a back-in-stock waitlist with automatic discount codes.</p>
+              </details>
             </article>
-
-            <article class="case">
-              <h3>Making analytics numbers trustworthy</h3>
-              <dl>
-                <dt>Challenge</dt><dd>Reports looked healthy but were misleading — 99.9% engagement included large bot traffic.</dd>
-                <dt>What I did</dt><dd>Cleaned up tracked events, found ~51% of sessions were overseas bots, rebuilt reporting to lead with real (Australian) sessions and orders, and root-caused a broken tracker to an exact one-hour window.</dd>
-              </dl>
-              <p class="result"><strong>Result:</strong> Engagement corrected from 99.9% to 55.7% (64.6% for real Australian traffic); reports are now trustworthy for decision-making.</p>
+            <article class="case-card">
+              <header class="case-head">
+                <span class="case-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></svg></span>
+                <h3>Making analytics numbers trustworthy</h3>
+              </header>
+              <p class="case-challenge"><b>Challenge:</b> Reports looked healthy but were misleading — 99.9% engagement included large bot traffic.</p>
+              <div class="case-big"><strong>99.9% → 55.7%</strong><span>Engagement corrected (64.6% for real Australian traffic)</span></div>
+              <div class="ba">
+                <div class="ba-row">
+                  <span class="ba-label">Engagement rate</span>
+                  <span class="ba-bars">
+                    <span class="ba-line before"><i>Before</i><span class="ba-track"><span class="ba-fill" style="width:100%"></span></span><b>99.9%</b></span>
+                    <span class="ba-line after"><i>After</i><span class="ba-track"><span class="ba-fill" style="width:56%"></span></span><b>55.7%</b></span>
+                  </span>
+                </div>
+              </div>
+              <p class="case-note">~51% of sessions were overseas bots. Reporting now leads with real Australian sessions and orders.</p>
+              <details class="case-did">
+                <summary>What I did</summary>
+                <p>Cleaned up tracked events, found ~51% of sessions were overseas bots, rebuilt reporting to lead with real (Australian) sessions and orders, and root-caused a broken tracker to an exact one-hour window.</p>
+              </details>
             </article>
           </div>
 
           <aside class="how">
-            <h3>How I work</h3>
-            <p>I use Claude Code, an AI coding assistant, to build and test changes — I set priorities, review what's proposed, and approve what goes live.</p>
+            <span class="case-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M16 11l2 2 4-4"/></svg></span>
+            <div>
+              <h3>How I work</h3>
+              <p>I use Claude Code, an AI coding assistant, to build and test changes — I set priorities, review what's proposed, and approve what goes live.</p>
+            </div>
           </aside>
         </div>
       </section>
