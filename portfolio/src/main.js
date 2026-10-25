@@ -117,3 +117,39 @@ if (resumeBtn) {
       resumeBtn.querySelector('span').textContent = 'Request my resume'
     })
 }
+
+// Tap-to-enlarge for work-sample images
+document.querySelectorAll('.sample img').forEach((img) => {
+  img.tabIndex = 0
+  img.setAttribute('role', 'button')
+  const open = () => {
+    if (img.closest('.slot').classList.contains('is-empty')) return
+    const box = document.createElement('div')
+    box.className = 'lightbox'
+    box.setAttribute('role', 'dialog')
+    box.setAttribute('aria-modal', 'true')
+    box.setAttribute('aria-label', img.alt)
+    const big = document.createElement('img')
+    big.src = img.currentSrc || img.src
+    big.alt = img.alt
+    const close = document.createElement('button')
+    close.type = 'button'
+    close.setAttribute('aria-label', 'Close image')
+    close.textContent = '×'
+    box.append(big, close)
+    const done = () => {
+      box.remove()
+      document.removeEventListener('keydown', onKey)
+      img.focus()
+    }
+    const onKey = (e) => { if (e.key === 'Escape') done() }
+    box.addEventListener('click', done)
+    document.addEventListener('keydown', onKey)
+    document.body.append(box)
+    close.focus()
+  }
+  img.addEventListener('click', open)
+  img.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open() }
+  })
+})
