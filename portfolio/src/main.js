@@ -24,12 +24,16 @@ document.querySelectorAll('.slot').forEach((slot) => {
   const img = slot.querySelector('img')
   const showPlaceholder = () => {
     slot.classList.add('is-empty')
-    if (!slot.querySelector('.ph')) {
-      const ph = document.createElement('div')
-      ph.className = 'ph'
-      ph.textContent = `[PLACEHOLDER: ${slot.dataset.label} — add images/${slot.dataset.img}]`
-      slot.prepend(ph)
-    }
+    if (slot.querySelector('.ph')) return
+    const ph = document.createElement('div')
+    ph.className = 'ph'
+    ph.innerHTML = `
+      <svg class="ph-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M4 18l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <strong></strong><span class="ph-hint"></span><code></code>`
+    ph.querySelector('strong').textContent = slot.dataset.label
+    ph.querySelector('.ph-hint').textContent = slot.dataset.hint || ''
+    ph.querySelector('code').textContent = `images/${slot.dataset.img}`
+    slot.prepend(ph)
   }
   img.addEventListener('error', showPlaceholder)
   if (img.complete && img.naturalWidth === 0) showPlaceholder()
