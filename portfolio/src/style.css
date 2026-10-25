@@ -261,3 +261,7 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 .js .reveal.in .ring { opacity: 1; }
 @media (max-width: 860px) { .kpis { grid-template-columns: repeat(2, 1fr); } .stat-trio { grid-template-columns: 1fr; } .flow-tools .tool { width: 76px; } }
 @media (prefers-reduced-motion: reduce) { .js .reveal .ba-fill, .js .reveal .ring { transition: none; } }
+
+.top-rule { border-top: 1px solid var(--line); }
+.website-work { margin: 48px 0 8px; font-size: 1.15rem; }
+#automation .samples { margin-top: 16px; }
