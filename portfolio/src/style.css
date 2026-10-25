@@ -170,3 +170,6 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 .fbar b { font-size: 0.95rem; }
 .fnote { margin: 6px 0 0; font-size: 0.78rem; color: var(--muted); text-align: center; }
 @media (max-width: 560px) { .fstep { grid-template-columns: 90px 1fr; } }
+
+.sample.featured { grid-column: 1 / -1; }
+.sample.featured img { width: 100%; }
