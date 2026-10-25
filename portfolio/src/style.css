@@ -267,3 +267,25 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 #automation .samples { margin-top: 16px; }
 
 .tagline-sub { margin: -8px 0 16px; font-size: 1.05rem; color: var(--accent-dark); font-weight: 500; }
+
+/* About */
+.about-intro { max-width: 760px; font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.5; color: var(--text); margin-bottom: 40px; }
+.journey { list-style: none; margin: 0 0 40px; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+.journey::before { content: ""; position: absolute; top: 19px; left: 20px; right: 25%; height: 2px; background: var(--line); }
+.journey li { position: relative; }
+.journey .dot { position: relative; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 2px solid var(--line); color: var(--accent-dark); font-weight: 700; font-size: 0.85rem; margin-bottom: 14px; }
+.journey .now .dot { background: var(--accent); border-color: var(--accent); color: #fff; width: 48px; border-radius: 999px; }
+.journey h3 { font-size: 1rem; margin-bottom: 4px; }
+.journey p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+.about-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.about-card { padding: 24px; border-radius: 16px; background: linear-gradient(135deg, #efe4d6, #f8f2e9); border: 1px solid var(--line); }
+.about-card .case-icon { background: #fff; margin-bottom: 14px; }
+.about-card h3 { margin-bottom: 6px; }
+.about-card p { margin: 0; font-size: 0.95rem; color: var(--muted); }
+@media (max-width: 860px) {
+  .journey { grid-template-columns: 1fr; gap: 18px; }
+  .journey::before { top: 20px; bottom: 20px; left: 19px; right: auto; width: 2px; height: auto; }
+  .journey li { display: grid; grid-template-columns: 48px 1fr; column-gap: 14px; }
+  .journey .dot { grid-row: span 2; margin: 0; }
+  .about-cards { grid-template-columns: 1fr; }
+}
