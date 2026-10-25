@@ -8,7 +8,7 @@ Drop exported images here using these exact filenames. Until a file exists, the 
 | `linkedin-ads-results.png` | LinkedIn Ads results chart |
 | `skinmasterclass.png` | SkinMasterclass brand campaign samples |
 | `nomad-brand-book.jpg` | NOMAD brand book samples (Orange Branding team project) |
-| `orange-branding-corporate.png` | Orange Branding corporate materials (team project) |
+| `orange-branding-corporate.jpg` | Orange Branding corporate materials (team project) |
 | `china-ecommerce-event.jpg` | China e-commerce / medical-device B2B event materials (team project) |
 | `social-and-co.png` | Social & Co brand identity |
 
