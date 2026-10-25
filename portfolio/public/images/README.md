@@ -5,7 +5,6 @@ Drop exported images here using these exact filenames. Until a file exists, the 
 | Filename | What it is |
 | --- | --- |
 | `headshot.jpg` | Headshot (Canva deck, page 1), cropped square |
-| `linkedin-ads-results.png` | LinkedIn Ads results chart |
 | `skinmasterclass.png` | SkinMasterclass brand campaign samples |
 | `nomad-brand-book.jpg` | NOMAD brand book samples (Orange Branding team project) |
 | `orange-branding-corporate.jpg` | Orange Branding corporate materials (team project) |
@@ -13,3 +12,5 @@ Drop exported images here using these exact filenames. Until a file exists, the 
 | `social-and-co.png` | Social & Co brand identity |
 
 Resume PDF goes in `public/resume/` as `Archie-Ringconada-Resume.pdf`.
+
+Instagram account insights screenshot: `instagram-insights.jpg`.

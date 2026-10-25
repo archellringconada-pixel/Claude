@@ -173,3 +173,6 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 
 .sample.featured { grid-column: 1 / -1; }
 .sample.featured img { width: 100%; }
+
+.stats-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 860px) { .stats-4 { grid-template-columns: repeat(2, 1fr); } }
