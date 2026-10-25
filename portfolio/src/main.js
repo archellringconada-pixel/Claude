@@ -102,3 +102,18 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
 } else {
   reveals.forEach((r) => r.classList.add('in'))
 }
+
+// Resume: if the PDF isn't uploaded yet, offer a request-by-email button instead of a dead link
+const resumeBtn = document.getElementById('resume-btn')
+if (resumeBtn) {
+  fetch(resumeBtn.getAttribute('href'), { method: 'HEAD' })
+    .then((res) => {
+      const type = res.headers.get('content-type') || ''
+      if (!res.ok || !type.includes('pdf')) throw new Error('missing')
+    })
+    .catch(() => {
+      resumeBtn.removeAttribute('download')
+      resumeBtn.href = 'mailto:archellringconada@gmail.com?subject=' + encodeURIComponent('Resume request')
+      resumeBtn.querySelector('span').textContent = 'Request my resume'
+    })
+}
