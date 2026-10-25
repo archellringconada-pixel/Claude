@@ -91,9 +91,31 @@ function iconNode(item) {
   return span
 }
 
+const cats = {
+  'Social Media & Advertising': 'social',
+  'Editing & Design': 'social',
+  'Website, Audit & SEO': 'web',
+  'CRM & Automation': 'web',
+  'Project Management': 'work',
+  'Documentation & Reporting': 'work',
+  'Google Workspace': 'work',
+  'Communication & Collaboration': 'work',
+}
+const tabs = [
+  ['all', 'All'],
+  ['web', 'Websites & automation'],
+  ['social', 'Social & design'],
+  ['work', 'Productivity'],
+]
+
 export function renderTools(root) {
+  const bar = el('div', 'tool-tabs')
+  bar.setAttribute('role', 'group')
+  bar.setAttribute('aria-label', 'Filter tools by category')
+  const wraps = []
   groups.forEach((g) => {
     const wrap = el('div', 'tool-group')
+    wrap.dataset.cat = cats[g.title]
     wrap.append(el('h3', '', g.title))
     const ul = el('ul', 'tool-card')
     g.items.forEach((item) => {
@@ -104,7 +126,22 @@ export function renderTools(root) {
     })
     wrap.append(ul)
     root.append(wrap)
+    wraps.push(wrap)
   })
+  tabs.forEach(([key, label], i) => {
+    const b = el('button', 'tool-tab' + (i === 0 ? ' on' : ''), label)
+    b.type = 'button'
+    b.setAttribute('aria-pressed', String(i === 0))
+    b.addEventListener('click', () => {
+      bar.querySelectorAll('.tool-tab').forEach((x) => {
+        x.classList.toggle('on', x === b)
+        x.setAttribute('aria-pressed', String(x === b))
+      })
+      wraps.forEach((w) => { w.hidden = key !== 'all' && w.dataset.cat !== key })
+    })
+    bar.append(b)
+  })
+  root.before(bar)
 }
 
 export function renderToolRow(root, names) {

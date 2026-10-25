@@ -174,3 +174,96 @@ document.querySelectorAll('[data-collapse]').forEach((grid) => {
   })
   grid.after(btn)
 })
+
+// ---- Interactivity: progress bar, scroll-spy, reveal, count-up, back-to-top ----
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Scroll progress bar + back-to-top
+const bar = document.createElement('div')
+bar.className = 'progress'
+bar.setAttribute('aria-hidden', 'true')
+const toTop = document.createElement('button')
+toTop.type = 'button'
+toTop.className = 'to-top'
+toTop.setAttribute('aria-label', 'Back to top')
+toTop.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>'
+toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }))
+document.body.append(bar, toTop)
+let ticking = false
+const onScroll = () => {
+  if (ticking) return
+  ticking = true
+  requestAnimationFrame(() => {
+    const max = document.documentElement.scrollHeight - innerHeight
+    bar.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`
+    toTop.classList.toggle('show', scrollY > 900)
+    ticking = false
+  })
+}
+addEventListener('scroll', onScroll, { passive: true })
+onScroll()
+
+// Scroll-spy: highlight the nav link of the section in view
+const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')]
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (!e.isIntersecting) return
+    navLinks.forEach((a) => {
+      const on = a.getAttribute('href') === '#' + e.target.id
+      a.classList.toggle('active', on)
+      if (on) a.setAttribute('aria-current', 'true')
+      else a.removeAttribute('aria-current')
+    })
+  })
+}, { rootMargin: '-45% 0px -50% 0px' })
+navLinks.forEach((a) => {
+  const target = document.querySelector(a.getAttribute('href'))
+  if (target) spy.observe(target)
+})
+
+// Reveal cards as they scroll into view
+const revealSel = '.about-card, .journey li, .kpi, .p2-top > div, .tool-group, .client, .phase, .sample, .metric-card, .how, .resume-card, .contact-grid > *'
+const targets = [...document.querySelectorAll(revealSel)].filter((n) => !n.classList.contains('reveal'))
+if (!reduce && 'IntersectionObserver' in window) {
+  targets.forEach((n, i) => {
+    n.classList.add('rv')
+    n.style.transitionDelay = `${(i % 4) * 70}ms`
+  })
+  const rio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in')
+        rio.unobserve(e.target)
+      }
+    })
+  }, { threshold: 0.12 })
+  targets.forEach((n) => rio.observe(n))
+}
+
+// Count-up numbers
+const countEls = [...document.querySelectorAll('.stats dd, .kpi strong')].filter((el) => {
+  const first = el.firstChild
+  return first && first.nodeType === 3 && /^(−?)(\d+(?:\.\d+)?)(.*)$/.test(first.nodeValue.trim()) && !/→|\//.test(first.nodeValue)
+})
+if (!reduce && 'IntersectionObserver' in window) {
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return
+      cio.unobserve(e.target)
+      const node = e.target.firstChild
+      const [, sign, num, rest] = node.nodeValue.trim().match(/^(−?)(\d+(?:\.\d+)?)(.*)$/)
+      const dec = (num.split('.')[1] || '').length
+      const end = parseFloat(num)
+      const t0 = performance.now()
+      const dur = 1100
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / dur)
+        const eased = 1 - Math.pow(1 - p, 3)
+        node.nodeValue = `${sign}${(end * eased).toFixed(dec)}${rest}`
+        if (p < 1) requestAnimationFrame(step)
+      }
+      requestAnimationFrame(step)
+    })
+  }, { threshold: 0.6 })
+  countEls.forEach((el) => cio.observe(el))
+}

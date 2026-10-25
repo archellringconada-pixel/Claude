@@ -353,3 +353,33 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
   .collapsible.all-hidden:not(.expanded) { display: none; }
   .samples + .show-more { margin-top: 16px; }
 }
+
+/* Interactivity */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 60; pointer-events: none; }
+.nav a:not(.btn) { position: relative; }
+.nav a.active:not(.btn) { color: var(--accent-dark); font-weight: 600; }
+.nav a.active:not(.btn)::after { content: ""; position: absolute; left: 2px; right: 2px; bottom: 4px; height: 2px; border-radius: 2px; background: var(--accent); }
+.to-top { position: fixed; right: 18px; bottom: 18px; z-index: 55; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--accent); color: #fff; display: grid; place-items: center; cursor: pointer; box-shadow: 0 4px 14px rgba(60,40,20,0.25); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .25s, transform .25s, background .2s; }
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { background: var(--accent-dark); }
+.to-top svg { width: 20px; height: 20px; }
+.tool-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; }
+.tool-tab { padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; color: var(--text); font: inherit; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.tool-tab:hover { border-color: var(--accent); }
+.tool-tab.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.tool-grid { margin-top: 24px; }
+.tool-group[hidden] { display: none; }
+.js .rv { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease, box-shadow .2s ease; }
+.js .rv.in { opacity: 1; transform: none; }
+.js .rv.in:hover, .case-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(60,40,20,0.10); }
+.case-card, .phase { transition: transform .2s ease, box-shadow .2s ease; }
+.js .rv.in.phase:hover { transform: translateY(-3px); }
+.btn { transition: background .2s, border-color .2s, transform .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .progress { display: none; }
+  .js .rv, .js .rv.in, .btn, .to-top { transition: none; }
+  .js .rv.in:hover, .case-card:hover, .btn:hover { transform: none; }
+}
+@media (max-width: 860px) { .nav a.active:not(.btn)::after { display: none; } .to-top { right: 14px; bottom: 14px; } }
