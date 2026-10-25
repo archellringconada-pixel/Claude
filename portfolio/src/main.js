@@ -37,6 +37,10 @@ document.querySelectorAll('.slot').forEach((slot) => {
   }
   img.addEventListener('error', showPlaceholder)
   if (img.complete && img.naturalWidth === 0) showPlaceholder()
+  // Lazy images may not attempt to load until scrolled near, so probe the file up front.
+  const probe = new Image()
+  probe.onerror = showPlaceholder
+  probe.src = img.getAttribute('src')
 })
 
 // Contact form (Formspree)
