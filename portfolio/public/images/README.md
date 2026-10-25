@@ -16,3 +16,5 @@ Resume PDF goes in `public/resume/` as `Archie-Ringconada-Resume.pdf`.
 Instagram account insights screenshot: `instagram-insights.jpg`.
 
 Blog sample: `gnp-blog.jpg` (Garden Nursery Products blog post).
+
+Website sample: `gnp-website.jpg` (Garden Nursery Products shop, newsletter sign-up, footer).
