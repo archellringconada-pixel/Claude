@@ -177,3 +177,8 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 .stats-4 { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 860px) { .stats-4 { grid-template-columns: repeat(2, 1fr); } }
 
+
+.sample-group { margin: 32px 0 12px; font-size: 1rem; color: var(--accent-dark); text-transform: uppercase; letter-spacing: 0.08em; }
+.samples + .samples { margin-top: 24px; }
+.samples.two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 860px) { .samples.two { grid-template-columns: 1fr; } }
