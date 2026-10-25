@@ -1,7 +1,10 @@
 import './style.css'
-import { renderTools, renderToolRow } from './tools.js'
+import { renderTools, renderToolRow, renderFlow } from './tools.js'
 
 renderTools(document.getElementById('tool-grid'))
+document.documentElement.classList.add('js')
+document.querySelectorAll('[data-tools]').forEach((ul) => renderToolRow(ul, ul.dataset.tools.split('|').filter(Boolean)))
+document.querySelectorAll('[data-flow]').forEach((ul) => renderFlow(ul, ul.dataset.flow.split('|')))
 renderToolRow(document.getElementById('p2-tools'), ['WooCommerce', 'Elementor', 'GoHighLevel', 'Airtable', 'Boost.space / Make', 'Google Analytics', 'Search Console', 'Claude Code'])
 
 document.getElementById('year').textContent = new Date().getFullYear()
@@ -79,3 +82,19 @@ form.addEventListener('submit', async (e) => {
     btn.disabled = false
   }
 })
+
+// Animate bars/rings in when they scroll into view
+const reveals = document.querySelectorAll('.reveal')
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in')
+        io.unobserve(e.target)
+      }
+    })
+  }, { threshold: 0.2 })
+  reveals.forEach((r) => io.observe(r))
+} else {
+  reveals.forEach((r) => r.classList.add('in'))
+}

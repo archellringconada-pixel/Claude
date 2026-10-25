@@ -117,3 +117,19 @@ export function renderToolRow(root, names) {
     root.append(li)
   })
 }
+
+export function renderFlow(root, names) {
+  const all = groups.flatMap((g) => g.items)
+  names.forEach((name, i) => {
+    const item = all.find((x) => x.name === name)
+    if (!item) return
+    if (i > 0) {
+      const arrow = el('li', 'flow-arrow', '→')
+      arrow.setAttribute('aria-hidden', 'true')
+      root.append(arrow)
+    }
+    const li = el('li', 'tool')
+    li.append(iconNode(item), el('span', 'tn', item.name))
+    root.append(li)
+  })
+}
