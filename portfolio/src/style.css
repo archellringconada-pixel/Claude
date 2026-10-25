@@ -340,3 +340,7 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 #process .phase { box-shadow: 0 1px 3px rgba(60,40,20,0.06); border-color: #e0d4c2; }
 #process h2 { margin-bottom: 4px; }
 #process .process-sub { margin-bottom: 24px; }
+
+.case-plain { margin: 0; font-size: 0.98rem; line-height: 1.5; color: var(--text); }
+.case-did p + p { margin-top: 8px; }
+.case-did p b { color: var(--text); }
