@@ -22,29 +22,9 @@ nav.addEventListener('click', (e) => {
 // Image slots: show a clearly-marked placeholder until the real asset exists.
 document.querySelectorAll('.slot').forEach((slot) => {
   const img = slot.querySelector('img')
-  const showFunnel = () => {
-    const steps = [
-      ['Impressions', '524K+', 524000],
-      ['Video views', '205K+', 205000],
-      ['Clicks', '9.4K', 9400],
-      ['Website visits', '8.1K', 8100],
-      ['Leads', '56', 56],
-    ]
-    const max = Math.log10(steps[0][2])
-    const wrap = document.createElement('div')
-    wrap.className = 'funnel'
-    wrap.innerHTML = steps
-      .map(([label, value, n]) => {
-        const w = Math.max(18, Math.round((Math.log10(n) / max) * 100))
-        return `<div class="fstep"><span class="flabel">${label}</span><span class="fbar" style="width:${w}%"><b>${value}</b></span></div>`
-      })
-      .join('') + '<p class="fnote">Full-funnel LinkedIn Ads campaigns · bar lengths use a log scale, not to scale</p>'
-    slot.prepend(wrap)
-  }
   const showPlaceholder = () => {
     slot.classList.add('is-empty')
     if (slot.querySelector('.ph')) return
-    if (slot.dataset.fallback === 'funnel') return showFunnel()
     const ph = document.createElement('div')
     ph.className = 'ph'
     ph.innerHTML = `

@@ -163,7 +163,7 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 .nb { white-space: nowrap; }
 .sample .ph { aspect-ratio: auto; height: 230px; }
 
-.funnel { padding: 24px; display: grid; gap: 10px; }
+.funnel { padding: 24px; display: grid; gap: 10px; background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius); }
 .fstep { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 12px; }
 .flabel { font-size: 0.85rem; color: var(--muted); text-align: right; }
 .fbar { display: block; background: linear-gradient(90deg, var(--accent), #9c8068); color: #fff; border-radius: 6px; padding: 8px 12px; min-width: 64px; }
