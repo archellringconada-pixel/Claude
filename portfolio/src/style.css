@@ -383,3 +383,6 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
   .js .rv.in:hover, .case-card:hover, .btn:hover { transform: none; }
 }
 @media (max-width: 860px) { .nav a.active:not(.btn)::after { display: none; } .to-top { right: 14px; bottom: 14px; } }
+
+.writing-tags { margin: 8px 0 28px; }
+#writing .samples.two { align-items: start; }
