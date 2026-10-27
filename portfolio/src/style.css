@@ -138,10 +138,7 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
   .headshot { max-width: 280px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .tool-grid { grid-template-columns: 1fr; }
-  .nav-toggle { display: block; }
-  .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 8px 20px 16px; }
-  .nav.open { display: flex; }
-  .nav a { padding: 10px 0; }
+
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
@@ -386,3 +383,11 @@ form input:focus, form textarea:focus { outline: 2px solid var(--accent); border
 
 .writing-tags { margin: 8px 0 28px; }
 #writing .samples.two { align-items: start; }
+
+@media (max-width: 1020px) {
+  .nav-toggle { display: block; }
+  .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 8px 20px 16px; }
+  .nav.open { display: flex; }
+  .nav a { padding: 10px 0; }
+  .nav a.active:not(.btn)::after { display: none; }
+}
